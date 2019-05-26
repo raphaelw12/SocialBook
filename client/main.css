@@ -1,0 +1,23 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+
+img{
+	width: 100%;
+	margin-top: 5px;
+	object-fit: cover;
+}
+.col-sm-3 {  
+    right: -66px;
+}
+
+.icon{
+	top: -109px;
+    transition: initial;
+    right: -105px;
+}
+.display-4 {
+    font-size: 2rem;
+}

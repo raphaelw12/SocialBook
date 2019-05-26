@@ -1,0 +1,152 @@
+<head>
+  <title>socialBook</title>
+</head>
+
+<body>
+<div class="container border border-dark">
+     <div class="row justify-content-around">
+  <div class="col-sm-6">
+    <h1 class="display-1">Social Book</h1>
+  </div> 
+  </div>
+
+{{> addProfile}}
+<div class="row"> 
+{{> proFile}}
+</div>
+{{> viewProfile}}
+
+</div>
+
+</body>
+
+<template name="proFile">
+    {{#each proAll}}
+<div id={{_id}} class="col-4">
+  <div class="row justify-content-around">
+    <div class="col-4">
+      <button type="button" class="js-profileedit btn btn-link">
+        <img class="profile" src="{{img}}">
+      </button>
+    <div class="col-1 icon">
+      <i class="zmdi zmdi-delete js-delete "></i>
+    </div>
+    </div> 
+  </div> <!-- / end profile pic -->
+  <div class="row justify-content-around">
+    <div class="col"  style="transition: initial; right: -93px;">
+    <h1 class="display-4">{{firstName}} &nbsp; {{lastName}}</h1>
+    </div> 
+  </div><!-- / end profile name -->
+  <div class="row justify-content-around" style="margin-bottom: 8px;">
+    <div class="col-2">
+      <button class="btn btn-primary js-like">Like</button>
+      <h1 class="display-4">{{like}}</h1>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-danger js-dislike">Dislike</button>
+      <h1 class="display-4">{{dislike}}</h1>
+    </div> 
+  </div> <!-- / end mood -->
+  </div>
+
+<!-- end of editprofile -->
+
+    {{/each}}
+</template>
+<!-- veiwprofile -->
+
+
+<template name="addProfile">
+  <div class="row justify-content-around">
+  <div class="col-6" style="left: -284px;">
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#picture">
+  Add Profile
+    </button> 
+  </div> 
+  </div>
+
+
+<!-- adding profiles -->
+<div class="modal fade" id="picture" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Image</span>
+  </div>
+  <input type="text" name="image" class="form-control" placeholder="url" aria-label="url" aria-describedby="basic-addon1">
+</div>
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">First Name</span>
+  </div>
+  <input type="text" name="firstName" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1">
+</div>
+
+     <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Last Name</span>
+  </div>
+  <input type="text" name="lastName" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1">
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-saveProfile">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<template name="viewProfile">
+  
+    <div class="modal fade" id="edited" tabindex="-1" role="dialog" aria-labelledby="editedLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editedLabel">{{firstName}} &nbsp; {{lastName}} &nbsp; Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="viewUser">
+        <input id="userId" type="text">
+        <div class="row justify-content-around">
+          <div class="col-4">      
+        <img class="profile" src="{{img}}">      
+          </div> 
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-4">
+            <h1>{{firstName}} &nbsp; {{lastName}}</h1>
+          </div> 
+        </div>
+          <div class="row justify-content-around">
+            <div class="col-4">      
+             <h4>likes {{like}}</h4>
+            </div>
+              <div class="col-4">      
+                <h4>Dislikes {{dislike}}</h4>
+              </div> 
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+</template>
